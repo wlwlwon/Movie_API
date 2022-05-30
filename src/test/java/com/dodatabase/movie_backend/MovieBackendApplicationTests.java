@@ -1,4 +1,4 @@
-package com.example.movie_backend;
+package com.dodatabase.movie_backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
