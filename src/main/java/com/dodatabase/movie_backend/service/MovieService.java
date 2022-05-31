@@ -34,7 +34,7 @@ public class MovieService {
 
     }
 
-    public Optional<Movie> findCondMovie(Movie movie) {
+    public Movie findCondMovie(Movie movie) {
         return movieRepository.findById(movie);
     }
 
