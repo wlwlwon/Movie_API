@@ -19,5 +19,4 @@ public class MovieResponseDTO {
         public String actor;
         public float userRating;
     }
-
 }
