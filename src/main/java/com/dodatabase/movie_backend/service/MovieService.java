@@ -9,17 +9,15 @@ import com.dodatabase.movie_backend.repository.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-
 @Service
 @RequiredArgsConstructor
 public class MovieService {
 
     private final MovieRepository movieRepository;
 
-    public Movie create(Movie movie){
+    public void create(Movie movie) {
 
-        Movie saveMovie = movieRepository.save(movie);
-        return saveMovie;
+        movieRepository.save(movie);
     }
 
     /**
@@ -34,11 +32,11 @@ public class MovieService {
 
     }
 
-    public Movie findCondMovie(Movie movie) {
-        return movieRepository.findById(movie);
-    }
+    // public Movie findCondMovie(Movie movie) {
+    // return movieRepository.findById(movie);
+    // }
 
-    public Optional<Movie> findByTitle(String keyword) {
-        return movieRepository.findByTitle(keyword);
-    }
+    // public Optional<Movie> findByTitle(String keyword) {
+    // return movieRepository.findByTitle(keyword);
+    // }
 }
