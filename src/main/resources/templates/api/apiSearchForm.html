@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div class="container">
+        <form action="/api/search" method="post">
+            <div class="form-group">
+                <h1>네이버 영화 검색</h1>
+                <h3><a href="/">홈 화면</a> </h3>
+                <p><label for="name">키워드</label>
+                    <input type="text" th:name="keyword" th:value="${keyword}">
+                </p>
+            </div>
+            <button type="submit">검색</button>
+            <button type="reset">취소</button>
+        </form>
+    </div> <!-- /container -->
+</body>
+
+</html>
