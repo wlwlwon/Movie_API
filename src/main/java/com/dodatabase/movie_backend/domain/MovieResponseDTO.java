@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class MovieResponseDTO {
+public class MovieResponseDto {
 
     private Item[] items;
 
