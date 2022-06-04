@@ -9,23 +9,21 @@ import com.dodatabase.movie_backend.repository.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-
 @Service
 @RequiredArgsConstructor
 public class MovieService {
 
     private final MovieRepository movieRepository;
 
-    public Movie create(Movie movie){
-
-        Movie saveMovie = movieRepository.save(movie);
-        return saveMovie;
+    public void create(Movie movie) {
+        System.out.println(movie);
+        movieRepository.save(movie);
     }
 
     /**
      * 전체 도서 목록 조회
      */
-    public List<Movie> findBooks() {
+    public List<Movie> findMovies() {
         return movieRepository.findAll();
     }
 
@@ -34,11 +32,11 @@ public class MovieService {
 
     }
 
-    public Movie findCondMovie(Movie movie) {
-        return movieRepository.findById(movie);
-    }
+    // public Movie findCondMovie(Movie movie) {
+    // return movieRepository.findById(movie);
+    // }
 
-    public Optional<Movie> findByTitle(String keyword) {
-        return movieRepository.findByTitle(keyword);
-    }
+    // public Optional<Movie> findByTitle(String keyword) {
+    // return movieRepository.findByTitle(keyword);
+    // }
 }
