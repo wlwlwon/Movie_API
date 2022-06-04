@@ -16,14 +16,14 @@ public class MovieService {
     private final MovieRepository movieRepository;
 
     public void create(Movie movie) {
-
+        System.out.println(movie);
         movieRepository.save(movie);
     }
 
     /**
      * 전체 도서 목록 조회
      */
-    public List<Movie> findBooks() {
+    public List<Movie> findMovies() {
         return movieRepository.findAll();
     }
 

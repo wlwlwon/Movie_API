@@ -16,7 +16,7 @@ import org.springframework.ui.Model;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class MovieApiController {
 

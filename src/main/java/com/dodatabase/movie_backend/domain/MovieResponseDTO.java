@@ -11,6 +11,7 @@ public class MovieResponseDto {
 
     @Data
     public static class Item {
+        public int number;
         public String title;
         public String link;
         public String subtitle;

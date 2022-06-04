@@ -1,12 +1,19 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- jQuery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
 <body>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <div class="container">
         <div>
             <h1>네이버 영화 검색 결과</h1>
             <h3><a href="/">홈 화면</a> </h3>
-            <table width="100%" height=200 bordercolor="green">
+            <table border="2" width="100%" height=200 bordercolor="green">
                 <thead>
                     <tr>
                         <th>목록</th>
@@ -14,6 +21,7 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td>번호</td>
                         <td>제목</td>
                         <td>링크</td>
                         <td>부제</td>
@@ -23,25 +31,47 @@
                         <td>평점</td>
                     </tr>
                     <tr th:each="movie : ${movies}">
-                        <form action="/api/new" method="post" id="save">
-                            <td th:utext="${movie.title}"></td>
-                            <td>
-                                <a th:href="${movie.link}">이동</a>
-                            </td>
-                            <td th:utext="${movie.subtitle}"></td>
-                            <td th:utext="${movie.pubDate}"></td>
-                            <td th:utext="${movie.director}"></td>
-                            <td th:utext="${movie.actor}"></td>
-                            <td th:utext="${movie.userRating}"></td>
-                        </form>
+                        <td th:utext="${movie.number}">Number</td>
+                        <td th:utext="${movie.title}">Title</td>
                         <td>
-                            <button form="save" type="submit">저장</button>
+                            <a th:href="${movie.link}">이동</a>
+                        </td>
+                        <td th:utext="${movie.subtitle}">Subtitle</td>
+                        <td th:utext="${movie.pubDate}">Pubslish Date</td>
+                        <td th:utext="${movie.director}">Director</td>
+                        <td th:utext="${movie.actor}">Actor</td>
+                        <td th:utext="${movie.userRating}">User Rating</td>
+                        <td>
+                            <input type="button" class="saveBtn" value="저장" />
                         </td>
                     </tr>
+
                 </tbody>
             </table>
         </div>
     </div> <!-- /container -->
+
+    <script>
+        // 버튼 클릭시 Row 값 가져오기
+        $(".saveBtn").click(function () {
+            var saveBtn = $(this);
+
+            // checkBtn.parent() : checkBtn의 부모는 <td>이다.
+            // checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
+            var tr = saveBtn.parent().parent();
+            var td = tr.children();
+
+            var number = td.eq(0).text();
+
+            $.ajax({
+                type: "POST",
+                url: "/api/new",
+                data: { "number": number }
+            });
+
+        });
+    </script>
+
 </body>
 
 </html>
