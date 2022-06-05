@@ -5,12 +5,13 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class MovieResponseDTO {
+public class MovieResponseDto {
 
     private Item[] items;
 
     @Data
     public static class Item {
+        public int number;
         public String title;
         public String link;
         public String subtitle;

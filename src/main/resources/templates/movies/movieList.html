@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div class="container">
+        <div>
+            <h1>영화 위시리스트 검색 결과</h1>
+            <h3><a href="/">홈 화면</a> </h3>
+            <table border="2" width="100%" height=200 bordercolor="black">
+                <thead>
+                    <tr>
+                        <th>목록</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>제목</td>
+                        <td>링크</td>
+                        <td>부제</td>
+                        <td>개봉</td>
+                        <td>감독</td>
+                        <td>배우</td>
+                        <td>평점</td>
+                    </tr>
+                    <tr th:each="movie : ${movies}">
+                        <td th:utext="${movie.title}"></td>
+                        <td>
+                            <a th:href="${movie.link}">이동</a>
+                        </td>
+                        <td th:utext="${movie.subtitle}"></td>
+                        <td th:utext="${movie.pubDate}"></td>
+                        <td th:utext="${movie.director}"></td>
+                        <td th:utext="${movie.actor}"></td>
+                        <td th:utext="${movie.userRating}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> <!-- /container -->
+</body>
+
+</html>

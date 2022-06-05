@@ -10,16 +10,19 @@ import javax.persistence.Id;
 import lombok.*;
 
 @Entity
-@Getter @Setter
-@Builder @AllArgsConstructor @NoArgsConstructor
+@Data
+@NoArgsConstructor
 public class Movie {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
 
     private String link;
+
+    private String subTitle;
 
     private Date pubDate;
 
