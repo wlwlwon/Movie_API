@@ -22,16 +22,19 @@
                         <td>배우</td>
                         <td>평점</td>
                     </tr>
+                    <div th:if="${not #lists.isEmpty(movies)}">
+                        내용
+                    </div>
                     <tr th:each="movie : ${movies}">
-                        <td th:utext="${movie.title}"></td>
+                        <td th:text="${movie.title}"></td>
                         <td>
                             <a th:href="${movie.link}">이동</a>
                         </td>
-                        <td th:utext="${movie.subtitle}"></td>
-                        <td th:utext="${movie.pubDate}"></td>
-                        <td th:utext="${movie.director}"></td>
-                        <td th:utext="${movie.actor}"></td>
-                        <td th:utext="${movie.userRating}"></td>
+                        <td th:text="${movie.subTitle}"></td>
+                        <td th:text="${movie.pubDate}"></td>
+                        <td th:text="${movie.director}"></td>
+                        <td th:text="${movie.actor}"></td>
+                        <td th:text="${movie.userRating}"></td>
                     </tr>
                 </tbody>
             </table>

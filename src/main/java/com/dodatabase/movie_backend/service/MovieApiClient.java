@@ -1,6 +1,6 @@
 package com.dodatabase.movie_backend.service;
 
-import com.dodatabase.movie_backend.domain.MovieResponseDto;
+import com.dodatabase.movie_backend.domain.MovieResponseDTO;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.*;
@@ -24,7 +24,7 @@ public class MovieApiClient {
 
     private final String OpenNaverMovieUrl_getMovies = "https://openapi.naver.com/v1/search/movie.json?query={query}";
 
-    public MovieResponseDto requestMovie(String keyword) {
+    public MovieResponseDTO requestMovie(String keyword) {
         final HttpHeaders headers = new HttpHeaders(); // 헤더에 key들을 담아준다.
         headers.set("X-NAVER-Client-ID", CLIENT_ID);
         headers.set("X-NAVER-Client-Secret", CLIENT_SECRET);
@@ -35,7 +35,7 @@ public class MovieApiClient {
         final HttpEntity<String> entity = new HttpEntity<>(headers);
 
         return restTemplate
-                .exchange(OpenNaverMovieUrl_getMovies, HttpMethod.GET, entity, MovieResponseDto.class, params)
+                .exchange(OpenNaverMovieUrl_getMovies, HttpMethod.GET, entity, MovieResponseDTO.class, params)
                 .getBody();
     }
 

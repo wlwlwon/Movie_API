@@ -3,8 +3,10 @@ package com.dodatabase.movie_backend.domain;
 import java.util.Date;
 
 import lombok.Data;
+import lombok.Getter;
 
 @Data
+@Getter
 public class MovieForm {
 
     private String title = null;

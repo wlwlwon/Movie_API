@@ -1,20 +1,8 @@
 package com.dodatabase.movie_backend.controller;
 
-import com.dodatabase.movie_backend.domain.Movie;
-import com.dodatabase.movie_backend.domain.MovieResponseDto;
-import com.dodatabase.movie_backend.service.MovieApiService;
-
-import com.dodatabase.movie_backend.service.MovieService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor

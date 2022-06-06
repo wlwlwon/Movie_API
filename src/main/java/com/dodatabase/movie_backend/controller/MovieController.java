@@ -6,12 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dodatabase.movie_backend.domain.Movie;
-import com.dodatabase.movie_backend.domain.MovieResponseDto;
+import com.dodatabase.movie_backend.domain.MovieResponseDTO;
 import com.dodatabase.movie_backend.service.MovieApiService;
 import com.dodatabase.movie_backend.service.MovieService;
 
@@ -21,9 +20,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MovieController {
 
+    private Long sequence = 0L;
     private final MovieApiService movieApiService;
     private final MovieService movieService;
-    private MovieResponseDto.Item[] itemsDto;
+    private MovieResponseDTO.Item[] itemsDto;
     private final Movie movie;
 
     @GetMapping("/")
@@ -39,12 +39,12 @@ public class MovieController {
     @PostMapping("/api/search")
     public String searchApi(@RequestParam("keyword") String keyword, Model model) {
         int num = 1;
-        MovieResponseDto.Item[] items = movieApiService.findByKeyword(keyword).getItems();
+        MovieResponseDTO.Item[] items = movieApiService.findByKeyword(keyword).getItems();
         model.addAttribute("movies", items);
 
         itemsDto = items;
 
-        for (MovieResponseDto.Item item : items) {
+        for (MovieResponseDTO.Item item : items) {
             item.setNumber(num++);
         }
 
@@ -54,7 +54,8 @@ public class MovieController {
     @ResponseBody
     @PostMapping("/api/new")
     public void create(@RequestParam("number") int i) {
-        movie.setTitle(itemsDto[i - 1].getTitle());
+        movie.setId(++sequence);
+        movie.setTitle(itemsDto[i - 1].getTitle().replace("<b>","").replace("</b>", "")); //<b> 같은거 지워줌
         movie.setLink(itemsDto[i - 1].getLink());
         movie.setSubTitle(itemsDto[i - 1].getSubtitle());
         movie.setPubDate(itemsDto[i - 1].getPubDate());
@@ -67,10 +68,13 @@ public class MovieController {
 
     @GetMapping("/movies")
     public String list(Model model) {
-        List<Movie> books = movieService.findMovies();
-        model.addAttribute("books", books);
+        List<Movie> items = movieService.findMovies();
+        System.out.println(items);
+        model.addAttribute("movies", items);
         return "movies/movieList";
     }
+
+
 
     // @PostMapping("/api/search")
     // public String searchApi(@RequestParam("keyword") String keyword, Model model)

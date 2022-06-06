@@ -15,9 +15,10 @@ public class MovieService {
 
     private final MovieRepository movieRepository;
 
-    public void create(Movie movie) {
+    public Long create(Movie movie) {
         System.out.println(movie);
         movieRepository.save(movie);
+        return movie.getId();
     }
 
     /**
@@ -27,10 +28,10 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    public void deleteMovie(Movie movie) {
-        movieRepository.delete(movie);
-
-    }
+//    public void deleteMovie(Movie movie) {
+//        movieRepository.delete(movie);
+//
+//    }
 
     // public Movie findCondMovie(Movie movie) {
     // return movieRepository.findById(movie);

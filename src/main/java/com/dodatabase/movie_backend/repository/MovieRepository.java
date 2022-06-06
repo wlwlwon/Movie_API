@@ -15,10 +15,10 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     // Optional<Movie> findByTitle(String keyword);
 
-    // List<Movie> findAll();
+   // List<Movie> findAll();
 
-    // List<Movie> Save(Movie movie);
+   // Movie save(Movie movie);
 
-    // List<Movie> Delete(Movie movie);
+    // List<Movie> delete(Movie movie);
 
 }
