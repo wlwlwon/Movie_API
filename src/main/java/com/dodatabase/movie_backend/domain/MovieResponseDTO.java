@@ -12,12 +12,19 @@ public class MovieResponseDTO {
     @Data
     public static class Item {
         public int number;
+
         public String title;
+
         public String link;
+
         public String subtitle;
+
         public String pubDate;
+
         public String director;
+
         public String actor;
+
         public float userRating;
     }
 }

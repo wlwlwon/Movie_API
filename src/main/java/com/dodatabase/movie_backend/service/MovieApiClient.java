@@ -3,6 +3,7 @@ package com.dodatabase.movie_backend.service;
 import com.dodatabase.movie_backend.domain.MovieResponseDTO;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,8 +17,10 @@ public class MovieApiClient {
 
     private final RestTemplate restTemplate;
 
-    private final String CLIENT_ID = "Hqsz1tECcg712EE903wl";
-    private final String CLIENT_SECRET = "av_jqTlPjr";
+    @Value("${app.Client-ID}")
+    private final String CLIENT_ID;
+    @Value("${app.CLIENT_SECRET}")
+    private final String CLIENT_SECRET;
 
     private final String OpenNaverMovieUrl_getMovies = "https://openapi.naver.com/v1/search/movie.json?query={query}";
 
@@ -26,7 +29,7 @@ public class MovieApiClient {
         headers.set("X-NAVER-Client-ID", CLIENT_ID);
         headers.set("X-NAVER-Client-Secret", CLIENT_SECRET);
 
-        Map<String, String> params = new HashMap<String, String>();
+        Map<String, String> params = new HashMap<>();
         params.put("query", keyword);
 
         final HttpEntity<String> entity = new HttpEntity<>(headers);
